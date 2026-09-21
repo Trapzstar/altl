@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "Lyri-X - YouTube Music Floating Lyrics",
+  "version": "1.3.0",
+  "description": "Lyri-X: Lirik YouTube Music di jendela melayang. Sidebar draggable, 7 sumber lirik: LRCLib, SimpMusic, KuGou, Lyrist, Genius, NetEase, Lyrics.ovh.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://music.youtube.com/*",
+    "https://lrclib.net/*",
+    "https://lyrics.simpmusic.org/*",
+    "https://lyrics.kugou.com/*",
+    "https://lyrist.vercel.app/*",
+    "https://api.lyrics.ovh/*",
+    "https://genius.com/*",
+    "https://music.163.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://music.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "commands": {
+    "toggle-lyrics-pip": {
+      "suggested_key": {
+        "default": "Alt+L"
+      },
+      "description": "Buka/tutup sidebar lirik melayang"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon.png"
+  }
+}
